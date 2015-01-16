@@ -1,0 +1,49 @@
+//@ refines "RArray1/RArray.java";
+
+public class RArray {
+
+    private /*@ spec_public @*/ Object[] tab;
+    private /*@ spec_public @*/ int taille;
+
+    /* @ public invariant ...;
+      @*/
+
+    /* @ also
+      @ requires ...;
+      @ ensures ...;
+      @*/
+    public RArray(int capacite);
+
+    /* @ also
+      @*/
+    public void clear();
+
+    /* @ also
+      @*/
+    public /*@ pure @*/ boolean contains(Object e);
+
+    /* @ also
+      @*/
+    public /*@ pure @*/ int nbOcc(Object e);
+
+    /* @ also
+      @*/
+    public /*@ pure @*/ int index(Object e);
+
+    /* @ also
+      @*/
+    public void add(Object e);
+
+    /* @ also
+      @*/
+    public Object replace(Object e,int indice);
+
+    /* @ also
+      @*/
+    public Object removeInd(int indice);
+
+    /* @ also
+      @*/
+    public boolean remove(Object e);
+
+}
