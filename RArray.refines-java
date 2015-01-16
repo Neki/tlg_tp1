@@ -5,44 +5,98 @@ public class RArray {
     private /*@ spec_public @*/ Object[] tab;
     private /*@ spec_public @*/ int taille;
 
-    /* @ public invariant ...;
+    /*@ public invariant taille >= 0 && taille <= tab.length;
+      @ public invariant (\forall int i;
+      @                   0 <= i && i < taille;
+      @                   tab[i] != null);
+      @ public invariant (\forall int i;
+      @                   taille <= i && i < tab.length;
+      @                   tab[i] == null);
       @*/
 
-    /* @ also
-      @ requires ...;
-      @ ensures ...;
+    /*@ also
+      @ requires capacite >= 0;
+      @ ensures capacite == tab.length;
       @*/
     public RArray(int capacite);
 
-    /* @ also
+    /*@ also
+      @ ensures taille == 0;
       @*/
     public void clear();
 
-    /* @ also
+    /*@ also
+      @ ensures (nbOcc(e) > 0 ==> \result == true);
+      @ ensures (nbOcc(e) == 0 ==> \result == false);
+      @ ensures (\forall int i; 0 <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
       @*/
     public /*@ pure @*/ boolean contains(Object e);
 
-    /* @ also
+    /*@ also
+      @ ensures \result == (\num_of int i;
+      @                     0 <= i && i < taille;
+      @                     tab[i].equals(e));
+      @ ensures (\forall int i; 0 <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
       @*/
     public /*@ pure @*/ int nbOcc(Object e);
 
-    /* @ also
+    /*@ also
+      @ requires contains(e);
+      @ ensures \result < taille && \result >= 0;
+      @ ensures e.equals(tab[\result]);
+      @ ensures (\forall int i; 0 <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
+      @ also
+      @ requires !contains(e);
+      @ ensures \result == -1;
+      @ ensures (\forall int i; 0 <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
       @*/
     public /*@ pure @*/ int index(Object e);
 
-    /* @ also
+    /*@ also
+      @ ensures taille == \old(taille) + 1;
+      @ ensures tab[taille - 1].equals(e);
+      @ ensures (\forall int i; 0 <= i && i < taille - 1; \old(tab)[i].equals(tab[i]));
       @*/
     public void add(Object e);
 
-    /* @ also
+    /*@ also
+      @ requires indice >= 0 && indice < taille;
+      @ ensures (\forall int i; 0 <= i && i < taille && i != indice; \old(tab)[i].equals(tab[i]));
+      @ ensures tab[indice].equals(e);
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
       @*/
     public Object replace(Object e,int indice);
 
-    /* @ also
+    /*@ also
+      @ requires indice >= 0 && indice < taille;
+      @ ensures (\forall int i; 0 <= i && i < indice; \old(tab)[i].equals(tab[i]));
+      @ ensures (\forall int i; indice <= i && i < taille; \old(tab)[i + 1].equals(tab[i]));
+      @ ensures \old(taille) + 1 == taille;
+      @ ensures tab.length == \old(tab).length;
       @*/
     public Object removeInd(int indice);
 
-    /* @ also
+    /*@ also
+      @ requires contains(e);
+      @ ensures \result == true;
+      @ ensures taille == \old(taille) - \old(nbOcc(e));
+      @ ensures (\forall int i; 0 <= i && i < \old(taille); !\old(tab)[i].equals(e) ==> \old(nbOcc(tab[i])) == nbOcc(\old(tab)[i])); // TODO: debug
+      @ ensures !contains(e);
+      @ also
+      @ requires !contains(e);
+      @ ensures \result == false;
+      @ ensures (\forall int i; 0 <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures taille == \old(taille);
+      @ ensures tab.length == \old(tab).length;
       @*/
     public boolean remove(Object e);
 
