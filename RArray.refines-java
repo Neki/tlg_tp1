@@ -79,8 +79,8 @@ public class RArray {
     /*@ also
       @ requires indice >= 0 && indice < taille;
       @ ensures (\forall int i; 0 <= i && i < indice; \old(tab)[i].equals(tab[i]));
-      @ ensures (\forall int i; indice <= i && i < taille; \old(tab)[i + 1].equals(tab[i]));
-      @ ensures \old(taille) + 1 == taille;
+      @ ensures (\forall int i; indice <= i && i < taille; \old(tab)[i].equals(tab[i]));
+      @ ensures \old(taille) - 1 == taille;
       @ ensures tab.length == \old(tab).length;
       @*/
     public Object removeInd(int indice);
