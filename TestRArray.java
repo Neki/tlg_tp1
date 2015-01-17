@@ -112,7 +112,7 @@ public class TestRArray {
         a.add("toto");
         a.add("tata");
         a.add("titi");
-        a.remove(1);
+        a.removeInd(1);
     }
 
     // Objectif : tester la suppression d'un élément appartenant au tableau
