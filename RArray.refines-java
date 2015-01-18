@@ -22,6 +22,7 @@ public class RArray {
 
     /*@ also
       @ ensures taille == 0;
+	  @ ensures tab.length == \old(tab).length;
       @*/
     public void clear();
 
