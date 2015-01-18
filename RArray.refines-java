@@ -89,8 +89,9 @@ public class RArray {
       @ requires contains(e);
       @ ensures \result == true;
       @ ensures taille == \old(taille) - \old(nbOcc(e));
-      @ ensures (\forall int i; 0 <= i && i < \old(taille); !\old(tab)[i].equals(e) ==> \old(nbOcc(\old(tab)[i])) == nbOcc(\old(tab)[i])); // TODO: debug
-      @ ensures !contains(e);
+      @ ensures (\forall int i; 0 <= i && i < \old(taille); !\old(tab)[i].equals(e) ==> contains(\old(tab)[i])); // TODO: debug
+      @ ensures (\forall int i; 0 <= i && i < taille; nbOcc((tab)[i]) == \old(nbOcc(tab[i])));
+	  @ ensures !contains(e);
       @ also
       @ requires !contains(e);
       @ ensures \result == false;
