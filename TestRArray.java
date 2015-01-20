@@ -122,7 +122,7 @@ public class TestRArray {
         a.add("toto");
         a.add("tata");
         a.add("titi");
-        a.removeInd(20);
+        a.removeInd(1);
     }
 	
 	    // Objectif : tester la suppression d'un élément à un indice donné
@@ -132,7 +132,7 @@ public class TestRArray {
         a.add("toto");
         a.add("tata");
         a.add("titi");
-        a.removeInd(1);
+        a.removeInd(20);
     }
 
     // Objectif : tester la suppression d'un élément appartenant au tableau
