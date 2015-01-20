@@ -115,9 +115,19 @@ public class TestRArray {
     }
 
 
-    // Objectif : tester la suppression d'un élément à un indice donné
-    // Résultat : l'élement à l'index 1 a été supprimé du tableau et les éléments d'indice supérieur ont été décalés d'un indice
+    // Objectif : tester le comportement de removeInd() lorsqu'un index invalide est passé en paramètre
+    // Résultat : removeInd renvoie null
     public static void testRemoveInd() {
+        RArray a = new RArray(10);
+        a.add("toto");
+        a.add("tata");
+        a.add("titi");
+        a.removeInd(20);
+    }
+	
+	    // Objectif : tester la suppression d'un élément à un indice donné
+    // Résultat : l'élement à l'index 1 a été supprimé du tableau et les éléments d'indice supérieur ont été décalés d'un indice
+    public static void testRemoveIndOutOfBounds() {
         RArray a = new RArray(10);
         a.add("toto");
         a.add("tata");
@@ -157,6 +167,7 @@ public class TestRArray {
         testReplace();
         testReplaceOutOfBounds();
         testRemoveInd();
+		testRemoveIndOutOfBounds();
         testRemove();
         testRemoveNonExistant();
     }
