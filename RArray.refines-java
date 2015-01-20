@@ -74,6 +74,10 @@ public class RArray {
       @ ensures tab[indice].equals(e);
       @ ensures taille == \old(taille);
       @ ensures tab.length == \old(tab).length;
+      @ ensures \result.equals(\old(tab)[indice]);
+      @ also
+      @ requires indice < 0 || indice >= taille;
+      @ ensures \result == null;
       @*/
     public Object replace(Object e,int indice);
 
@@ -83,6 +87,10 @@ public class RArray {
       @ ensures (\forall int i; indice <= i && i < taille; \old(tab)[i].equals(tab[i]));
       @ ensures \old(taille) - 1 == taille;
       @ ensures tab.length == \old(tab).length;
+      @ ensures \result.equals(\old(tab)[indice]);
+      @ also
+      @ requires indice < 0 || indice >= taille;
+      @ ensures \result == null;
       @*/
     public Object removeInd(int indice);
 
@@ -91,7 +99,7 @@ public class RArray {
       @ ensures \result == true;
       @ ensures taille == \old(taille) - \old(nbOcc(e));
       @ ensures (\forall int i; 0 <= i && i < taille; nbOcc((tab)[i]) == \old(nbOcc(tab[i])));
-	  @ ensures !contains(e);
+      @ ensures !contains(e);
       @ also
       @ requires !contains(e);
       @ ensures \result == false;

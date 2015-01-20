@@ -96,7 +96,7 @@ public class TestRArray {
         a.add("titi");
     }
 
-    // Objectif : tester le remplacement d'un élément à un index donné par un autre élément
+    // Objectif : tester le remplacement d'un élément à un index donné (valide)
     // Résultat : après remplacement, le nouvel élément se trouve à l'index 0
     public static void testReplace() {
         RArray a = new RArray(10);
@@ -104,6 +104,16 @@ public class TestRArray {
         a.add("tata");
         a.replace("titi", 0);
     }
+
+    // Objectif : tester le comportement de replace() lorsqu'un index invalide est passé en paramètre
+    // Résultat : replace renvoie null
+    public static void testReplaceOutOfBounds() {
+        RArray a = new RArray(10);
+        a.add("toto");
+        a.add("tata");
+        a.replace("titi", 20);
+    }
+
 
     // Objectif : tester la suppression d'un élément à un indice donné
     // Résultat : l'élement à l'index 1 a été supprimé du tableau et les éléments d'indice supérieur ont été décalés d'un indice
@@ -145,6 +155,7 @@ public class TestRArray {
         testAdd();
         testAddAndResize();
         testReplace();
+        testReplaceOutOfBounds();
         testRemoveInd();
         testRemove();
         testRemoveNonExistant();
