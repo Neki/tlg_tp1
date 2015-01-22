@@ -40,7 +40,7 @@ public class TestRArray {
         a.contains(s);
     }
 
-    // Objectif : le nombre d'élements dans un tableau vide est 0
+    // Objectif : un tableau vide ne contient aucun élément
     // Résultat : le nombre d'élements dans un tableau vide est 0
     public static void testEmptyNbOcc() {
         RArray a = new RArray(10);
@@ -76,8 +76,6 @@ public class TestRArray {
         a.add("tata");
         a.index(s);
     }
-
-    // TODO: test resize
 
     // Objectif : tester le comportement de l'ajout d'un élément
     // Résultat : l'élément est ajouté à la fin et la taille est augmentée de 1
@@ -124,8 +122,8 @@ public class TestRArray {
         a.add("titi");
         a.removeInd(1);
     }
-	
-	    // Objectif : tester la suppression d'un élément à un indice donné
+
+    // Objectif : tester la suppression d'un élément à un indice donné
     // Résultat : l'élement à l'index 1 a été supprimé du tableau et les éléments d'indice supérieur ont été décalés d'un indice
     public static void testRemoveIndOutOfBounds() {
         RArray a = new RArray(10);
@@ -136,7 +134,7 @@ public class TestRArray {
     }
 
     // Objectif : tester la suppression d'un élément appartenant au tableau
-    // Résultat : toutes les occurences de l'objet ont été supprimées, les autres éléments sont toujours présents, et remove() renvoie vrai
+    // Résultat : toutes les occurences de l'objet ont été supprimées, les autres éléments sont toujours présents, et remove renvoie vrai
     public static void testRemove() {
         RArray a = new RArray(10);
         a.add("titi");
@@ -167,7 +165,7 @@ public class TestRArray {
         testReplace();
         testReplaceOutOfBounds();
         testRemoveInd();
-		testRemoveIndOutOfBounds();
+	testRemoveIndOutOfBounds();
         testRemove();
         testRemoveNonExistant();
     }
