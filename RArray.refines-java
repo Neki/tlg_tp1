@@ -1,4 +1,4 @@
-//@ refines "RArray1/RArray.java";
+//@ refines "RArray6/RArray.java";
 
 public class RArray {
 
@@ -104,7 +104,7 @@ public class RArray {
       @ requires contains(e);
       @ ensures \result == true;
       @ ensures taille == \old(taille) - \old(nbOcc(e));
-      @ ensures (\forall int i; 0 <= i && i < taille; nbOcc((tab)[i]) == \old(nbOcc(tab[i])));
+      @ ensures (\forall int i; 0 <= i && i < taille; nbOcc(tab[i]) == \old(nbOcc(tab[i])));
       @ ensures !contains(e);
       @ also
       @ requires !contains(e);

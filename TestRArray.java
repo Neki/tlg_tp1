@@ -142,6 +142,18 @@ public class TestRArray {
         a.remove("titi");
     }
 
+    // Objectif : tester la suppression d'un élément appartenant au tableau et présent plusieurs fois
+    // Résultat : toutes les occurences de l'objet ont été supprimées, les autres éléments sont toujours présents, et remove renvoie vrai
+    public static void testRemoveMultipleOcc() {
+        RArray a = new RArray(10);
+        a.add("titi");
+        a.add("toto");
+        a.add("titi");
+        a.add("toto");
+        a.remove("titi");
+    }
+
+
     // Objectif : tester la suppression d'un élément n'appartenant pas au tableau
     // Résultat : le tableau n'a pas été modifié et la méthode renvoie faux
     public static void testRemoveNonExistant() {
@@ -169,6 +181,7 @@ public class TestRArray {
         // Méthode commentée à cause du problème soulevé dans notre rapport
 	// testRemoveIndOutOfBounds();
         testRemove();
+        testRemoveMultipleOcc();
         testRemoveNonExistant();
     }
 
